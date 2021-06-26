@@ -1,4 +1,4 @@
-package ru.nikshlykov.rickandmortyapiapp.ui.dashboard
+package ru.nikshlykov.rickandmortyapiapp.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ru.nikshlykov.rickandmortyapiapp.R
+import ru.nikshlykov.rickandmortyapiapp.viewmodels.DashboardViewModel
 
 class DashboardFragment : Fragment() {
 

@@ -7,6 +7,10 @@
     <color name="yellow">#fc3</color>
     <color name="main_dark">#20242a</color>
     <color name="second_dark">#2b3038</color>
+    <color name="main_text_on_second_dark">@color/white</color>
+    <color name="second_text_on_second_dark">#676b70</color>
+
+    <color name="picture_load">#676b70</color>
 
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>

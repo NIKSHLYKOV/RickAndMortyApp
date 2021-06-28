@@ -44,7 +44,7 @@ class CharactersFragment : Fragment() {
       LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     charactersRv.adapter = charactersRvAdapter
 
-    charactersViewModel.charactersTestList.observe(viewLifecycleOwner, Observer {
+    charactersViewModel.getCharacters().observe(viewLifecycleOwner, Observer {
       charactersRvAdapter.characters = it
     })
   }

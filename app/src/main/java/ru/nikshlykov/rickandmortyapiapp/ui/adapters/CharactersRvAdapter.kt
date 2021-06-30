@@ -11,6 +11,10 @@ import com.bumptech.glide.Glide
 import ru.nikshlykov.rickandmortyapiapp.R
 import ru.nikshlykov.rickandmortyapiapp.ui.model.Character
 
+interface OnCharacterItemClickListener {
+  fun onCharacterItemClick(characterId: Int)
+}
+
 class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterViewHolder>() {
 
   var characters: List<Character> = ArrayList()
@@ -18,6 +22,12 @@ class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterVi
       field = value
       notifyDataSetChanged()
     }
+
+  private var onCharacterItemClickListener: OnCharacterItemClickListener? = null
+
+  fun setOnCharacterItemClickListener(onCharacterItemClickListener: OnCharacterItemClickListener) {
+    this.onCharacterItemClickListener = onCharacterItemClickListener
+  }
 
   override fun getItemCount(): Int {
     return characters.size
@@ -31,6 +41,9 @@ class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterVi
 
   override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
     val character: Character = characters[position]
+    holder.itemView.setOnClickListener {
+      onCharacterItemClickListener?.onCharacterItemClick(characterId = character.id)
+    }
     holder.characterName.text = character.name
     holder.characterAdditionalInfo.text = character.additionalData
     Glide.with(holder.itemView.context)
@@ -39,7 +52,8 @@ class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterVi
       .into(holder.characterImage)
   }
 
-  class CharacterViewHolder(v: View) : RecyclerView.ViewHolder(v) {
+  class CharacterViewHolder(v: View) :
+    RecyclerView.ViewHolder(v) {
     val characterName: TextView = v.findViewById(R.id.character_name)
     val characterAdditionalInfo: TextView = v.findViewById(R.id.character_additional_info)
     val characterImage: ImageView = v.findViewById(R.id.charater_image)

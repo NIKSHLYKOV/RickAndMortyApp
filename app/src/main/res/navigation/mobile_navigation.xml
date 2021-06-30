@@ -9,7 +9,11 @@
         android:id="@+id/navigation_characters"
         android:name="ru.nikshlykov.rickandmortyapiapp.ui.fragments.CharactersFragment"
         android:label="@string/title_characters"
-        tools:layout="@layout/fragment_characters" />
+        tools:layout="@layout/fragment_characters">
+        <action
+            android:id="@+id/action_navigation_characters_to_characterFragment"
+            app:destination="@id/characterFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -22,4 +26,14 @@
         android:name="ru.nikshlykov.rickandmortyapiapp.ui.fragments.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/characterFragment"
+        android:name="ru.nikshlykov.rickandmortyapiapp.ui.fragments.CharacterFragment"
+        android:label="fragment_character"
+        tools:layout="@layout/fragment_character">
+        <argument
+            android:name="characterId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
 </navigation>

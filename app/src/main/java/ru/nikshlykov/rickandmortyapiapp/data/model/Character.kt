@@ -1,6 +1,5 @@
 package ru.nikshlykov.rickandmortyapiapp.data.model
 
-import Location
 import com.google.gson.annotations.SerializedName
 
 data class Character(

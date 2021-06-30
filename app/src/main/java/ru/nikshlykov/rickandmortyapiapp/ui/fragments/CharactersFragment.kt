@@ -7,13 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ru.nikshlykov.rickandmortyapiapp.R
 import ru.nikshlykov.rickandmortyapiapp.ui.adapters.CharactersRvAdapter
+import ru.nikshlykov.rickandmortyapiapp.ui.adapters.OnCharacterItemClickListener
 import ru.nikshlykov.rickandmortyapiapp.viewmodels.CharactersViewModel
 
-class CharactersFragment : Fragment() {
+class CharactersFragment : Fragment(), OnCharacterItemClickListener {
 
   private lateinit var charactersViewModel: CharactersViewModel
 
@@ -23,6 +26,7 @@ class CharactersFragment : Fragment() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     charactersRvAdapter = CharactersRvAdapter()
+    charactersRvAdapter.setOnCharacterItemClickListener(this)
   }
 
   override fun onCreateView(
@@ -47,5 +51,12 @@ class CharactersFragment : Fragment() {
     charactersViewModel.getCharacters().observe(viewLifecycleOwner, Observer {
       charactersRvAdapter.characters = it
     })
+  }
+
+  override fun onCharacterItemClick(characterId: Int) {
+    val navDirection: NavDirections = CharactersFragmentDirections
+      .actionNavigationCharactersToCharacterFragment()
+      .setCharacterId(characterId)
+    findNavController().navigate(navDirection)
   }
 }

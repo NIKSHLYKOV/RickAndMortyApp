@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
@@ -48,8 +47,10 @@ class CharactersFragment : Fragment(), OnCharacterItemClickListener {
       LinearLayoutManager(context, RecyclerView.VERTICAL, false)
     charactersRv.adapter = charactersRvAdapter
 
-    charactersViewModel.getCharacters().observe(viewLifecycleOwner, Observer {
-      charactersRvAdapter.characters = it
+    charactersViewModel.getCharacters().observe(viewLifecycleOwner, {
+      if (it != null) {
+        charactersRvAdapter.characters = it
+      }
     })
   }
 

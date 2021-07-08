@@ -1,4 +1,4 @@
-package ru.nikshlykov.rickandmortyapiapp.data.model
+package ru.nikshlykov.rickandmortyapiapp.data.models
 
 import com.google.gson.annotations.SerializedName
 

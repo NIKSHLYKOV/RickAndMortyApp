@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.nikshlykov.rickandmortyapiapp.R
 import ru.nikshlykov.rickandmortyapiapp.ui.adapters.CharactersRvAdapter
 import ru.nikshlykov.rickandmortyapiapp.ui.adapters.OnCharacterItemClickListener
-import ru.nikshlykov.rickandmortyapiapp.viewmodels.CharactersViewModel
+import ru.nikshlykov.rickandmortyapiapp.ui.viewmodels.CharactersViewModel
 
 class CharactersFragment : Fragment(), OnCharacterItemClickListener {
 

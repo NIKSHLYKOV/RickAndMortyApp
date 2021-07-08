@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.nikshlykov.rickandmortyapiapp.R
-import ru.nikshlykov.rickandmortyapiapp.ui.model.Character
+import ru.nikshlykov.rickandmortyapiapp.ui.models.Character
 
 interface OnCharacterItemClickListener {
   fun onCharacterItemClick(characterId: Int)

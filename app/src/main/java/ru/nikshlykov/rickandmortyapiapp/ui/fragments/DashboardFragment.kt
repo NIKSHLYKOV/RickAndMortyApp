@@ -6,10 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import ru.nikshlykov.rickandmortyapiapp.R
-import ru.nikshlykov.rickandmortyapiapp.viewmodels.DashboardViewModel
+import ru.nikshlykov.rickandmortyapiapp.ui.viewmodels.DashboardViewModel
 
 class DashboardFragment : Fragment() {
 
@@ -24,7 +23,7 @@ class DashboardFragment : Fragment() {
       ViewModelProvider(this).get(DashboardViewModel::class.java)
     val root = inflater.inflate(R.layout.fragment_dashboard, container, false)
     val textView: TextView = root.findViewById(R.id.text_dashboard)
-    dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
+    dashboardViewModel.text.observe(viewLifecycleOwner, {
       textView.text = it
     })
     return root

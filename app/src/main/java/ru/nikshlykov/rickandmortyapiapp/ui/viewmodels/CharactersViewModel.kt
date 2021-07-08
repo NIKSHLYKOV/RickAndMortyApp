@@ -1,4 +1,4 @@
-package ru.nikshlykov.rickandmortyapiapp.viewmodels
+package ru.nikshlykov.rickandmortyapiapp.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.nikshlykov.rickandmortyapiapp.data.repositories.CharacterRepository
-import ru.nikshlykov.rickandmortyapiapp.ui.model.Character
+import ru.nikshlykov.rickandmortyapiapp.ui.models.Character
 
 class CharactersViewModel : ViewModel() {
 

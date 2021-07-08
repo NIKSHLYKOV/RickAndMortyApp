@@ -1,4 +1,4 @@
-package ru.nikshlykov.rickandmortyapiapp.viewmodels
+package ru.nikshlykov.rickandmortyapiapp.ui.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

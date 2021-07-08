@@ -1,4 +1,4 @@
-package ru.nikshlykov.rickandmortyapiapp.ui.model
+package ru.nikshlykov.rickandmortyapiapp.ui.models
 
 data class Character(
   val id: Int,

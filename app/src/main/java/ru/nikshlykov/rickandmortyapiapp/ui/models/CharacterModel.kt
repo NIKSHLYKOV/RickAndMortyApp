@@ -1,6 +1,6 @@
 package ru.nikshlykov.rickandmortyapiapp.ui.models
 
-data class Character(
+data class CharacterModel(
   val id: Int,
   val name: String,
   val imageUrl: String,

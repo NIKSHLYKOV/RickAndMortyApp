@@ -1,8 +1,8 @@
-package ru.nikshlykov.rickandmortyapiapp.data.models
+package ru.nikshlykov.rickandmortyapiapp.data.entities
 
 import com.google.gson.annotations.SerializedName
 
-data class Location(
+data class LocationEntity(
   @SerializedName("name") val name: String,
   @SerializedName("url") val url: String
 )

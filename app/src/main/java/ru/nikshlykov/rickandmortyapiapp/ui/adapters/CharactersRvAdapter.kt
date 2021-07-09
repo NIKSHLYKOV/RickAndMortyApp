@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.nikshlykov.rickandmortyapiapp.R
-import ru.nikshlykov.rickandmortyapiapp.ui.models.Character
+import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
 
 interface OnCharacterItemClickListener {
   fun onCharacterItemClick(characterId: Int)
@@ -17,7 +17,7 @@ interface OnCharacterItemClickListener {
 
 class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterViewHolder>() {
 
-  var characters: List<Character> = ArrayList()
+  var characters: List<CharacterModel> = ArrayList()
     set(value) {
       field = value
       notifyDataSetChanged()
@@ -40,7 +40,7 @@ class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterVi
   }
 
   override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-    val character: Character = characters[position]
+    val character: CharacterModel = characters[position]
     holder.itemView.setOnClickListener {
       onCharacterItemClickListener?.onCharacterItemClick(characterId = character.id)
     }

@@ -1,10 +1,10 @@
 package ru.nikshlykov.rickandmortyapiapp.data.mappers
 
-import ru.nikshlykov.rickandmortyapiapp.data.models.Character as DataCharacter
-import ru.nikshlykov.rickandmortyapiapp.ui.models.Character as UICharacter
+import ru.nikshlykov.rickandmortyapiapp.data.entities.CharacterEntity
+import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
 
 class CharacterMapper {
-  fun toUICharacter(character: DataCharacter) = UICharacter(
+  fun toUICharacter(character: CharacterEntity) = CharacterModel(
     character.id,
     character.name,
     character.image,

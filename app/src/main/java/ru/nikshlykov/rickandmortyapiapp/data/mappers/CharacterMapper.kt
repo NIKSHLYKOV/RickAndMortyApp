@@ -1,13 +1,23 @@
 package ru.nikshlykov.rickandmortyapiapp.data.mappers
 
 import ru.nikshlykov.rickandmortyapiapp.data.entities.CharacterEntity
-import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
+import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
+import ru.nikshlykov.rickandmortyapiapp.domain.models.Location
 
 class CharacterMapper {
-  fun toUICharacter(character: CharacterEntity) = CharacterModel(
+  fun toCharacter(character: CharacterEntity) = Character(
     character.id,
     character.name,
+    character.status,
+    character.species,
+    character.type,
+    character.gender,
+    Location(character.origin.name, character.origin.url),
+    Location(character.location.name, character.location.url),
     character.image,
-    character.gender + ", " + character.status
+    character.episode,
+    character.url
   )
+
+  // TODO добавить маппер для location
 }

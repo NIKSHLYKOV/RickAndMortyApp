@@ -1,16 +1,21 @@
 package ru.nikshlykov.rickandmortyapiapp.ui.mappers
 
+import ru.nikshlykov.rickandmortyapiapp.core.Mapper
 import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
 import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
 
-class CharacterModelMapper {
+class CharacterModelMapper : Mapper<Character, CharacterModel>() {
 
-  fun toCharacterModel(character: Character): CharacterModel {
+  override fun map(value: Character): CharacterModel {
     return CharacterModel(
-      character.id,
-      character.name,
-      character.image,
-      "${character.gender}, ${character.status}"
+      value.id,
+      value.name,
+      value.image,
+      "${value.gender}, ${value.status}"
     )
+  }
+
+  override fun reverseMap(value: CharacterModel): Character {
+    throw NotImplementedError()
   }
 }

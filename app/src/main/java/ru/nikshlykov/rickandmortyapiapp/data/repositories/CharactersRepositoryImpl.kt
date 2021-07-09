@@ -17,7 +17,7 @@ object CharactersRepositoryImpl : CharactersRepository {
 
   override suspend fun getCharacters(): List<Character> {
     val characters = characterApi.getCharacters()
-    return characters.map { character -> CharacterMapper().toCharacter(character) }
+    return characters.map { character -> CharacterMapper().map(character) }
   }
 }
 

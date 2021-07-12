@@ -49,7 +49,7 @@ class CharactersFragment : Fragment(), OnCharacterItemClickListener {
 
     charactersViewModel.getCharacters().observe(viewLifecycleOwner, {
       if (it != null) {
-        charactersRvAdapter.characters = it
+        charactersRvAdapter.characterItems = it
       }
     })
   }

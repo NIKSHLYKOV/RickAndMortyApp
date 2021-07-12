@@ -10,8 +10,12 @@ class CharacterModelMapper : Mapper<Character, CharacterModel>() {
     return CharacterModel(
       value.id,
       value.name,
-      value.image,
-      "${value.gender}, ${value.status}"
+      value.status,
+      value.species,
+      value.gender,
+      value.origin.name,
+      value.location.name,
+      value.image
     )
   }
 

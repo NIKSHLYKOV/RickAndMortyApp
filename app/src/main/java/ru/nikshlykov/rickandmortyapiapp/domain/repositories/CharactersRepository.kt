@@ -4,4 +4,6 @@ import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
 
 interface CharactersRepository {
   suspend fun getCharacters(): List<Character>
+
+  suspend fun getCharacter(characterId: Int): Character
 }

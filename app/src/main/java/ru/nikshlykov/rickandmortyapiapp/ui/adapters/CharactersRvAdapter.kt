@@ -9,7 +9,7 @@ import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ru.nikshlykov.rickandmortyapiapp.R
-import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
+import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterItemModel
 
 interface OnCharacterItemClickListener {
   fun onCharacterItemClick(characterId: Int)
@@ -17,7 +17,7 @@ interface OnCharacterItemClickListener {
 
 class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterViewHolder>() {
 
-  var characters: List<CharacterModel> = ArrayList()
+  var characterItems: List<CharacterItemModel> = ArrayList()
     set(value) {
       field = value
       notifyDataSetChanged()
@@ -30,7 +30,7 @@ class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterVi
   }
 
   override fun getItemCount(): Int {
-    return characters.size
+    return characterItems.size
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterViewHolder {
@@ -40,14 +40,14 @@ class CharactersRvAdapter : RecyclerView.Adapter<CharactersRvAdapter.CharacterVi
   }
 
   override fun onBindViewHolder(holder: CharacterViewHolder, position: Int) {
-    val character: CharacterModel = characters[position]
+    val characterItem: CharacterItemModel = characterItems[position]
     holder.itemView.setOnClickListener {
-      onCharacterItemClickListener?.onCharacterItemClick(characterId = character.id)
+      onCharacterItemClickListener?.onCharacterItemClick(characterId = characterItem.id)
     }
-    holder.characterName.text = character.name
-    holder.characterAdditionalInfo.text = character.additionalData
+    holder.characterName.text = characterItem.name
+    holder.characterAdditionalInfo.text = characterItem.additionalData
     Glide.with(holder.itemView.context)
-      .load(character.imageUrl)
+      .load(characterItem.imageUrl)
       .placeholder(R.drawable.shape_load_picture)
       .into(holder.characterImage)
   }

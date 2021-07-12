@@ -7,24 +7,26 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import ru.nikshlykov.rickandmortyapiapp.data.repositories.CharactersRepositoryImpl
 import ru.nikshlykov.rickandmortyapiapp.domain.interactors.GetCharactersInteractor
-import ru.nikshlykov.rickandmortyapiapp.ui.mappers.CharacterModelMapper
-import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
+import ru.nikshlykov.rickandmortyapiapp.ui.mappers.CharacterItemModelMapper
+import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterItemModel
 
 class CharactersViewModel : ViewModel() {
 
-  private val _charactersTestList2 = MutableLiveData<List<CharacterModel>>().apply {
+  private val _charactersTestList2 = MutableLiveData<List<CharacterItemModel>>().apply {
     value = ArrayList()
   }
 
-  private val charactersTestList2: LiveData<List<CharacterModel>> = _charactersTestList2
+  private val charactersTestList2: LiveData<List<CharacterItemModel>> = _charactersTestList2
 
-  fun getCharacters(): LiveData<List<CharacterModel>> {
+  fun getCharacters(): LiveData<List<CharacterItemModel>> {
     viewModelScope.launch {
-      val characters: List<CharacterModel> =
+      val characterItems: List<CharacterItemModel> =
         GetCharactersInteractor(CharactersRepositoryImpl).getCharacters()
-          .map { character -> CharacterModelMapper().map(character) }
-      _charactersTestList2.postValue(characters)
+          .map { character -> CharacterItemModelMapper().map(character) }
+      _charactersTestList2.postValue(characterItems)
     }
     return charactersTestList2
   }
+
+  // TODO Переименовать потом названия переменных, когда будет адекватное решение со списком.
 }

@@ -3,8 +3,10 @@ package ru.nikshlykov.rickandmortyapiapp.ui.models
 data class CharacterModel(
   val id: Int,
   val name: String,
-  val imageUrl: String,
-  val additionalData: String
+  val status: String,
+  val species: String,
+  val gender: String,
+  val origin: String,
+  val location: String,
+  val image: String
 )
-
-// TODO подумать над тем, как сделать тут Bitmap/Drawable, а не ссылку.

@@ -5,14 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import dagger.android.support.DaggerFragment
 import ru.nikshlykov.rickandmortyapiapp.R
 import ru.nikshlykov.rickandmortyapiapp.ui.viewmodels.DashboardViewModel
+import javax.inject.Inject
 
-class DashboardFragment : Fragment() {
+class DashboardFragment : DaggerFragment() {
+
+  @Inject
+  lateinit var viewModelFactory: ViewModelProvider.Factory
 
   private lateinit var dashboardViewModel: DashboardViewModel
+
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    dashboardViewModel = viewModelFactory.create(DashboardViewModel::class.java)
+  }
 
   override fun onCreateView(
     inflater: LayoutInflater,

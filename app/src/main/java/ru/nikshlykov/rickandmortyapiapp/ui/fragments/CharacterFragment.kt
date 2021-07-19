@@ -6,15 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import ru.nikshlykov.rickandmortyapiapp.App
+import dagger.android.support.DaggerFragment
 import ru.nikshlykov.rickandmortyapiapp.R
 import ru.nikshlykov.rickandmortyapiapp.ui.viewmodels.CharacterViewModel
 import javax.inject.Inject
 
-class CharacterFragment : Fragment() {
+class CharacterFragment : DaggerFragment() {
 
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -31,7 +30,6 @@ class CharacterFragment : Fragment() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    (activity?.application as App).appComponent.inject(this)
     characterViewModel = viewModelFactory.create(CharacterViewModel::class.java)
   }
 

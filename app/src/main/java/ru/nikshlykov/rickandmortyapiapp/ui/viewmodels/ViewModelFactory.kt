@@ -16,10 +16,16 @@ class ViewModelFactory @Inject constructor(
       CharactersViewModel::class.java -> {
         CharactersViewModel(getCharactersInteractor) as T
       }
-      CharacterViewModel::class.java  -> {
+      CharacterViewModel::class.java -> {
         CharacterViewModel(getCharacterInteractor) as T
       }
-      else                            -> {
+      DashboardViewModel::class.java -> {
+        DashboardViewModel() as T
+      }
+      NotificationsViewModel::class.java -> {
+        NotificationsViewModel() as T
+      }
+      else                               -> {
         throw IllegalArgumentException("ViewModel Not Found")
       }
     }

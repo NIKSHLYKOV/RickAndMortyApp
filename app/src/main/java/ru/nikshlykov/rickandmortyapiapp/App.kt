@@ -1,15 +1,13 @@
 package ru.nikshlykov.rickandmortyapiapp
 
-import android.app.Application
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import ru.nikshlykov.rickandmortyapiapp.di.AppComponent
 import ru.nikshlykov.rickandmortyapiapp.di.DaggerAppComponent
 
-class App: Application() {
+class App : DaggerApplication() {
 
-  lateinit var appComponent: AppComponent
+  var appComponent: AppComponent = DaggerAppComponent.factory().create(this)
 
-  override fun onCreate() {
-    super.onCreate()
-    appComponent = DaggerAppComponent.factory().create(this)
-  }
+  override fun applicationInjector(): AndroidInjector<out DaggerApplication> = appComponent
 }

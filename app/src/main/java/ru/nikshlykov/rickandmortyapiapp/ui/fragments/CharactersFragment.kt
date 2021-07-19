@@ -4,20 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import ru.nikshlykov.rickandmortyapiapp.App
+import dagger.android.support.DaggerFragment
 import ru.nikshlykov.rickandmortyapiapp.R
 import ru.nikshlykov.rickandmortyapiapp.ui.adapters.CharactersRvAdapter
 import ru.nikshlykov.rickandmortyapiapp.ui.adapters.OnCharacterItemClickListener
 import ru.nikshlykov.rickandmortyapiapp.ui.viewmodels.CharactersViewModel
 import javax.inject.Inject
 
-class CharactersFragment : Fragment(), OnCharacterItemClickListener {
+class CharactersFragment : DaggerFragment(), OnCharacterItemClickListener {
 
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -29,7 +28,6 @@ class CharactersFragment : Fragment(), OnCharacterItemClickListener {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    (activity?.application as App).appComponent.inject(this)
     charactersViewModel = viewModelFactory.create(CharactersViewModel::class.java)
     charactersRvAdapter = CharactersRvAdapter()
     charactersRvAdapter.setOnCharacterItemClickListener(this)

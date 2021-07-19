@@ -5,10 +5,13 @@ import dagger.BindsInstance
 import dagger.Component
 import ru.nikshlykov.rickandmortyapiapp.ui.fragments.CharacterFragment
 import ru.nikshlykov.rickandmortyapiapp.ui.fragments.CharactersFragment
+import javax.inject.Singleton
 
 @Component(
-  modules = [RepositoryModule::class, InteractorModule::class, ViewModelModule::class]
+  modules = [RepositoryModule::class, InteractorModule::class, ViewModelModule::class,
+    NetworkModule::class]
 )
+@Singleton
 interface AppComponent {
 
   @Component.Factory

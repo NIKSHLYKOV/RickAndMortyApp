@@ -5,13 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.nikshlykov.rickandmortyapiapp.data.repositories.CharactersRepositoryImpl
 import ru.nikshlykov.rickandmortyapiapp.domain.interactors.GetCharacterInteractor
 import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
 import ru.nikshlykov.rickandmortyapiapp.ui.mappers.CharacterModelMapper
 import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterModel
 
-class CharacterViewModel : ViewModel() {
+class CharacterViewModel(val getCharacterInteractor: GetCharacterInteractor) : ViewModel() {
 
   private val _character = MutableLiveData<CharacterModel>()
 
@@ -20,7 +19,7 @@ class CharacterViewModel : ViewModel() {
   fun getCharacter(characterId: Int): LiveData<CharacterModel> {
     viewModelScope.launch {
       val character: Character =
-        GetCharacterInteractor(CharactersRepositoryImpl).getCharacter(characterId)
+        getCharacterInteractor.getCharacter(characterId)
       _character.postValue(CharacterModelMapper().map(character))
     }
     return character

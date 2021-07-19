@@ -6,8 +6,9 @@ import ru.nikshlykov.rickandmortyapiapp.data.CharacterApi
 import ru.nikshlykov.rickandmortyapiapp.data.mappers.CharacterMapper
 import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
 import ru.nikshlykov.rickandmortyapiapp.domain.repositories.CharactersRepository
+import javax.inject.Inject
 
-object CharactersRepositoryImpl : CharactersRepository {
+class CharactersRepositoryImpl @Inject constructor() : CharactersRepository {
   private val _baseURL = "https://rickandmortyapi.com/api/"
   private var retrofit: Retrofit = Retrofit.Builder()
     .baseUrl(_baseURL)

@@ -5,12 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import ru.nikshlykov.rickandmortyapiapp.data.repositories.CharactersRepositoryImpl
 import ru.nikshlykov.rickandmortyapiapp.domain.interactors.GetCharactersInteractor
 import ru.nikshlykov.rickandmortyapiapp.ui.mappers.CharacterItemModelMapper
 import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterItemModel
 
-class CharactersViewModel : ViewModel() {
+class CharactersViewModel(val getCharactersInteractor: GetCharactersInteractor) :
+  ViewModel() {
 
   private val _charactersTestList2 = MutableLiveData<List<CharacterItemModel>>().apply {
     value = ArrayList()
@@ -21,7 +21,7 @@ class CharactersViewModel : ViewModel() {
   fun getCharacters(): LiveData<List<CharacterItemModel>> {
     viewModelScope.launch {
       val characterItems: List<CharacterItemModel> =
-        GetCharactersInteractor(CharactersRepositoryImpl).getCharacters()
+        getCharactersInteractor.getCharacters()
           .map { character -> CharacterItemModelMapper().map(character) }
       _charactersTestList2.postValue(characterItems)
     }

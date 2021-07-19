@@ -4,7 +4,7 @@ import ru.nikshlykov.rickandmortyapiapp.core.Mapper
 import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
 import ru.nikshlykov.rickandmortyapiapp.ui.models.CharacterItemModel
 
-class CharacterItemModelMapper : Mapper<Character, CharacterItemModel>() {
+object CharacterItemModelMapper : Mapper<Character, CharacterItemModel>() {
 
   override fun map(value: Character): CharacterItemModel {
     return CharacterItemModel(

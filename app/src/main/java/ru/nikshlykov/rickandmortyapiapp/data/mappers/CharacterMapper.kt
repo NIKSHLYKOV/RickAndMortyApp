@@ -5,7 +5,7 @@ import ru.nikshlykov.rickandmortyapiapp.data.entities.CharacterEntity
 import ru.nikshlykov.rickandmortyapiapp.domain.models.Character
 import ru.nikshlykov.rickandmortyapiapp.domain.models.Location
 
-class CharacterMapper : Mapper<CharacterEntity, Character>() {
+object CharacterMapper : Mapper<CharacterEntity, Character>() {
 
   override fun map(value: CharacterEntity): Character {
     return Character(

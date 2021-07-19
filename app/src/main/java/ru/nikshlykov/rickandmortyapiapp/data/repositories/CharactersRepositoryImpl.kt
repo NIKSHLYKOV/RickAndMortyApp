@@ -11,12 +11,12 @@ class CharactersRepositoryImpl @Inject constructor(val characterApi: CharacterAp
 
   override suspend fun getCharacters(): List<Character> {
     val characters = characterApi.getCharacters()
-    return characters.map { character -> CharacterMapper().map(character) }
+    return characters.map { character -> CharacterMapper.map(character) }
   }
 
   override suspend fun getCharacter(characterId: Int): Character {
     val character = characterApi.getCharacter(characterId)
-    return CharacterMapper().map(character)
+    return CharacterMapper.map(character)
   }
 }
 

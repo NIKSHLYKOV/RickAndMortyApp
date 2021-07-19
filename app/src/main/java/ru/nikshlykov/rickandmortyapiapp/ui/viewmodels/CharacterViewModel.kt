@@ -20,7 +20,7 @@ class CharacterViewModel(val getCharacterInteractor: GetCharacterInteractor) : V
     viewModelScope.launch {
       val character: Character =
         getCharacterInteractor.getCharacter(characterId)
-      _character.postValue(CharacterModelMapper().map(character))
+      _character.postValue(CharacterModelMapper.map(character))
     }
     return character
   }

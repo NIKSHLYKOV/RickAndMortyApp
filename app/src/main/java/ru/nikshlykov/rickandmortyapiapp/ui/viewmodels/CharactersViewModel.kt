@@ -22,7 +22,7 @@ class CharactersViewModel(val getCharactersInteractor: GetCharactersInteractor) 
     viewModelScope.launch {
       val characterItems: List<CharacterItemModel> =
         getCharactersInteractor.getCharacters()
-          .map { character -> CharacterItemModelMapper().map(character) }
+          .map { character -> CharacterItemModelMapper.map(character) }
       _charactersTestList2.postValue(characterItems)
     }
     return charactersTestList2

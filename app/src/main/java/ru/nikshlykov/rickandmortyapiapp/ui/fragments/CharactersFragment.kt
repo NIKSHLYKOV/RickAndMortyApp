@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,7 +20,9 @@ import javax.inject.Inject
 class CharactersFragment : Fragment(), OnCharacterItemClickListener {
 
   @Inject
-  lateinit var charactersViewModel: CharactersViewModel
+  lateinit var viewModelFactory: ViewModelProvider.Factory
+
+  private lateinit var charactersViewModel: CharactersViewModel
 
   private lateinit var charactersRvAdapter: CharactersRvAdapter
   private lateinit var charactersRv: RecyclerView
@@ -27,6 +30,7 @@ class CharactersFragment : Fragment(), OnCharacterItemClickListener {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     (activity?.application as App).appComponent.inject(this)
+    charactersViewModel = viewModelFactory.create(CharactersViewModel::class.java)
     charactersRvAdapter = CharactersRvAdapter()
     charactersRvAdapter.setOnCharacterItemClickListener(this)
   }
